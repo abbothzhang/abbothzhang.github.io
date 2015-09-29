@@ -1,0 +1,21 @@
+---
+layout: indexGitHub
+title: 欢迎来到alberthuihui的个人主页
+---
+
+<!--<h2 style="text-align: center;color: #606c71;" >-->
+    <!--<a id="欢迎来到alberthuihui的个人主页" class="anchor"-->
+       <!--href="#%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0alberthuihui%E7%9A%84%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5"-->
+       <!--aria-hidden="true"><span class="octicon octicon-link"></span></a>-->
+<!--</h2>-->
+
+
+
+
+
+<h3>文章列表</h3>
+
+{% for post in site.posts %}
+<a class="{{ post.categories }} pl__all" href="{{ post.url }}"><span class="pl__title">{{ post.title }}</span>---<span class="pl__date">{{ post.date | date_to_string }}</span></a>
+<br>
+{% endfor %}
