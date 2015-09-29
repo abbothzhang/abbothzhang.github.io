@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+	<title>Xcode6升Xcode7遇到的问题及解决办法</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css"
+	media="screen">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css"
+	media="screen">
+<link rel="stylesheet" type="text/css"
+	href="/stylesheets/github-light.css" media="screen">
+</head>
+<body>
+	<section class="page-header">
+		<h1 class="project-name">Albert</h1>
+		<h2 class="project-tagline">albert的个人主页</h2>
+		<a href="https://github.com/abbothzhang/abbothzhang.github.io" class="btn">View on GitHub</a>
+        <a href="https://github.com/abbothzhang/abbothzhang.github.io/zipball/master" class="btn">Download .zip</a>
+        <a href="https://github.com/abbothzhang/abbothzhang.github.io/tarball/master" class="btn">Download .tar.gz</a>
+	</section>
+
+	<section class="main-content">
+
+		<h2 style="text-align: center;color: #606c71;">Xcode6升Xcode7遇到的问题及解决办法</h2>
+		<div id="pjax">
+			<h4 id="universal-frameworkxcode7universalframework">问题1：使用 universal-framework工程创建的工程，升到xcode7后universal无法重装导致framework打不出来</h4>
+<p>-——-解决办法：使用叁省创建的脚本，具体方法见http://www.atatech.org/articles/41378</p>
+
+<hr />
+
+<h4 id="builddoes-not-contain-bitcode-you-must-rebuild-it-with-bitcode-enabled-xcodesetting-enablebitcode-obtain-an-updated-library-from-the-vendor-or-disablebitcode-for-this-target-for-architecture-arm64">问题2：build时报***does not contain bitcode. You must rebuild it with bitcode enabled (Xcodesetting ENABLE_BITCODE), obtain an updated library from the vendor, or disablebitcode for this target. for architecture arm64</h4>
+
+<p>-——-解决办法：在”Build Settings”-&gt;”Enable Bitcode”里设置为no。这是苹果为app瘦身做的优化，必须当所有的依赖的第三方bundle都支持时才可设置为yes</p>
+
+<hr />
+
+<h4 id="application-transport-security-has-blocked-a-cleartext-http-http-resource-load-since-it-is-insecure-temporary-exceptions-can-be-configured-via-your-apps-infoplist-file">问题3：控制台打印：Application Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app’s Info.plist file.</h4>
+
+<p>-——-解决办法：在info.plist文件和<code>&lt;key&gt;CFBundleName&lt;/key&gt;</code>平级的地方加入</p>
+
+<p><code>&lt;key&gt;NSAppTransportSecurity&lt;/key&gt;
+    &lt;dict&gt;
+        &lt;key&gt;NSAllowsArbitraryLoads&lt;/key&gt;
+        &lt;true/&gt;
+    &lt;/dict&gt;</code></p>
+
+<hr />
+
+<h4 id="runprocess-launch-failed-security">问题4：新建工程点击run时报process launch failed: Security。</h4>
+
+<p>-——-需要在手机上设置-&gt;通用-&gt;描述文件里点击信任</p>
+
+<hr />
+
+<h4 id="psios9-avcapturesession-isrunningios9yesios9no">ps：发现iOS9一个坑， AVCaptureSession isRunning方法在iOS9之前锁屏时返回YES，iOS9上为NO，使用到这个方法时候要注意</h4>
+
+<p>29 Sep 2015</p>
+
+		</div>
+
+
+
+		<footer class="site-footer">
+
+			<span class="site-footer-credits" style="text-align: center">
+				 <!--my CSDN Blog Blog <a href="http://blog.csdn.net/xidianhuihui">http://blog.csdn.net/xidianhuihui</a>-->
+				<!--<a href="https://pages.github.com">GitHub Pages</a> using the-->
+				<!--<a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by-->
+				<!--<a href="https://twitter.com/jasonlong">Jason Long</a>.-->
+
+			</span>
+		</footer>
+
+	</section>
+
+
+</body>
+</html>

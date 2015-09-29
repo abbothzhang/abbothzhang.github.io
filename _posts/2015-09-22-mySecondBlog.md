@@ -1,7 +1,6 @@
 ---
-layout: index
+layout: indexGitHub
 title: 我的第二篇博客
 ---
 {{ page.title }}
-我的第二篇文章
-{{ page.date | date_to_string }}
+这个是正文
